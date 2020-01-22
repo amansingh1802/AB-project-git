@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <ul class="nav navbar-nav">
+        <li><a routerLink="/home">Home</a></li>
+        <li><a routerLink="/aboutus">About Us</a></li>
+        <li><a routerLink="/downloads">Downloads</a></li>
+        <li><a routerLink="/products">Products</a></li>
+        <li><a routerLink="/contactus">Contact Us</a></li>
+        <li *ngIf="isActive !== '1'"><a routerLink="/login">Login/Register</a></li>
+        <li *ngIf="isActive === '1'"><a routerLink="/logout">Logout</a></li>
+        <li style="text-align: right;">
+            <a routerLink="/orders">Cart</a>
+        </li>
+    </ul>
+    <h3 *ngIf="isActive === '1'">{{welcomeMessage}}</h3>
+</nav>
+<router-outlet></router-outlet>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Product Here</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="col-md-12">
+            <div class="row">
+                <h3>Add Product Here!</h3>
+            </div>
+
+            <form #productForm="ngForm" enctype='multipart/form-data' (ngSubmit)="SaveOrUpdateProduct(productForm)">
+                <div class="row">
+                    <div class="form-group">
+                        <label>Name :</label>
+                        <input [(ngModel)]="name" type="text" name="name" id="name" class="form-control"
+                            placeholder="Enter product name" value="Pro" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>GTIN :</label>
+                        <input [(ngModel)]="gtin" type="text" name="gtin" id="gtin" class="form-control"
+                            placeholder="Enter GTIN of product" value="Pro" />
+                    </div>
+                </div>
+                <div class="row col-md-12">
+                    <div class="form-group col-md-2" style="text-align: center;">
+                        <select [(ngModel)]="category" name="category" id="category">
+                            <option [ngValue]="Category" disabled>Category</option>
+                            <option value="PORCELAIN">Porcelain</option>
+                            <option value="PAVING">Paving</option>
+                            <option value="CERAMIC">Ceramic</option>
+                            <option value="ETERNITY">Eternity</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2" style="text-align: center;">
+                        <select [(ngModel)]="finish" name="finish" id="finish">
+                            <option [ngValue]="Finish" disabled>Finish</option>
+                            <option value="GLAZED">Glazed</option>
+                            <option value="GLOSSY">Glossy</option>
+                            <option value="MATTE">Matte</option>
+                            <option value="TEXTURED">Textured</option>
+                            <option value="HONED">Honed</option>
+                            <option value="LAPPATO">Lappato</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2" style="text-align: center;">
+                        <select [(ngModel)]="shape" name="shape" id="shape">
+                            <option [ngValue]="Shape" disabled>Shape</option>
+                            <option value="PENNY">Penny</option>
+                            <option value="MASAIC">Masaic</option>
+                            <option value="SQUARE">Square</option>
+                            <option value="SUBWAY">Subway</option>
+                            <option value="PLANK">Plank</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2" style="text-align: center;">
+                        <select [(ngModel)]="material" name="material" id="material">
+                            <option [ngValue]="Material" disabled>Material</option>
+                            <option value="CLAY">Clay</option>
+                            <option value="STONE">Stone</option>
+                            <option value="METAL">Metal</option>
+                            <option value="TERRAZZO">Terrazzo</option>
+                            <option value="QUARTZ">Quartz</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2" style="text-align: center;">
+                        <select [(ngModel)]="series" name="series" id="series">
+                            <option [ngValue]="Series" disabled>series</option>
+                            <option value="CARVING">Carving</option>
+                            <option value="DECOR">Decor</option>
+                            <option value="WOOD">Wood</option>
+                            <option value="GLOSSY">Glossy</option>
+                            <option value="MATT">Matt</option>
+                            <option value="METAL">Metal</option>
+                            <option value="POLISHED">Polished</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Description</label>
+                        <input [(ngModel)]="description" type="text" name="description" id="description"
+                            class="form-control" placeholder="Enter description" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input [(ngModel)]="price" type="text" name="price" id="price" class="form-control"
+                            placeholder="Enter price" />
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 offset-md-3">
+                            <h3>Choose File</h3>
+                            <div class="form-group">
+                                <input type="file" name="image" (change)="fileProgress($event)" />
+                            </div>
+                            <div *ngIf="fileUploadProgress">
+                                Upload progress: {{ fileUploadProgress }}
+                            </div>
+                            <div class="image-preview mb-3" *ngIf="previewUrl">
+                                <img [src]="previewUrl" height="300" />
+                            </div>
+
+                            <div class="mb-3" *ngIf="uploadedFilePath">
+                                {{uploadedFilePath}}
+                            </div>
+
+                            <!-- <div class="form-group">
+                                <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+                            </div>  -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>Vendor Registraton no</label>
+                        <input [(ngModel)]="regNo" type="text" name="regNo" id="regNo" class="form-control"
+                            placeholder="Enter Registration no" />
+                    </div>
+                </div>
+                <div class="row">
+                    <input type="button" (click)="GoToHome()" style="text-align: right ;" name="cancel"
+                        class="btn btn-danger" value="Cancel" id="btncancel" />
+                    <input type="submit" style="float: right;" style="text-align: right;" name="addproduct"
+                        class="btn btn-primary" value="Add Product" id="addproduct" />
+                    <!-- <input type="submit" style="float: right;" style="text-align: right;" name="updateproduct"
+                        class="btn btn-primary" value="Update Product" id="updateproduct" />
+                    {{message}} -->
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html> 
+
+<!-- *ngIf="action == 'ADD'"
+*ngIf="action == 'UPDATE'" -->
+
+<!-- name 
+category
+material
+shape
+finsh
+image
+description
+price 
+vendor -->
+
+
+
+<!-- <div class="row">
+    <div class="form-group">
+        <label>Upload Image</label>
+        <input [(ngModel)]="image" type="file" style="float: right;" style="text-align: right;"
+            name="image" class="btn btn-primary" value="Add Image" id="image" />
+    </div>
+</div> -->

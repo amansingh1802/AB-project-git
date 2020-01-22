@@ -1,0 +1,56 @@
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+		<ul class="nav navbar-nav">
+			<li>
+				<a routerLink="/home">Home</a>
+			</li>
+			<li>
+				<a routerLink="/aboutus">About Us</a>
+			</li>
+			<li>
+				<a routerLink="/download">Downloads</a>
+			</li>
+	
+			<li>
+				<a routerLink="/contactus">Contact Us</a>
+			</li>
+	
+	
+		</ul>
+	</nav>
+	
+	
+	
+	<body>
+		<div class="container">
+			<div class="row">
+				<h3>Your orders are!</h3>
+			</div>
+			<div class="row col-md-12">
+				<div class="table-responsive">
+					<!--  //table-responsive class defined in bootstrsp -->
+					<table class="table">
+						<!--  //table class defined in bootstrsp -->
+						<thead>
+							<tr>
+								<th class="col-md-3">Order No</th>
+								<th class="col-md-5">Date</th>
+								<th class="col-md-4">Show details</th>
+							</tr>
+						</thead>
+	
+						<tr *ngFor="let id of Orders">
+							<!--   for each loop h jisme emp variable h emps collection h home.component.ts classka-->
+							<td>{{id.id}}</td>
+							<td>{{id.date}}</td>
+							<td>
+								<input type="button" class="btn btn-primary" name="showdetails" id="showdetails" (click)="showDetails()"
+									value="click to show details">
+							</td>
+						</tr>
+	
+	
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>

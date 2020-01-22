@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <ul class="nav navbar-nav">
+      <li>
+        <a routerLink="/home">Home</a>
+      </li>
+      <li>
+          <a routerLink="/aboutus">About Us</a>
+      </li>
+      <li>
+          <a routerLink="/download">Downloads</a>
+      </li>
+      <li>
+          <a routerLink="/products">Products</a>
+      </li>
+      <li>
+          <a routerLink="/contactus">Contact Us</a>
+      </li>
+    
+    </ul>
+</nav>
+
+<router-outlet></router-outlet>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SignIn</title>
+</head>
+
+<body >
+
+  <div class="container">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <div class="row">
+        <h3>Login</h3>
+      </div>
+      <form #myForm="ngForm" (ngSubmit)="Login(myForm)">
+        <div class="row">
+          <div class="form-group">
+            <label>Email :</label>
+            <input ngModel type="text" name="email" id="email" class="form-control" placeholder="Enter Email" />
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <label>Password :</label>
+            <input ngModel type="password" name="password" id="password" class="form-control"
+              placeholder="Enter Password" />
+          </div>
+        </div>
+
+        <div class="row">
+            <input type="submit" name="login" class="btn btn-primary" value="Login" id="btnsubmit" />
+            &nbsp;
+            <input type="button" (click)="GoToHome()" name="cancel" class="btn btn-danger" value="Cancel" id="btncancel" />
+            <input type="button" style="float: right;" (click)="Register()" name="register" class="btn btn-warning" value="Register" id="btnregister" />
+            <h2 style="color: red;">{{message}}</h2>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+
+</html>

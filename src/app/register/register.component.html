@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+        <ul class="nav navbar-nav">
+          <li>
+            <a routerLink="/home">Home</a>
+          </li>
+          <li>
+              <a routerLink="/aboutus">About Us</a>
+          </li>
+          <li>
+              <a routerLink="/download">Downloads</a>
+          </li>
+          <li>
+              <a routerLink="/products">Products</a>
+          </li>
+          <li>
+              <a routerLink="/contactus">Contact Us</a>
+          </li>
+          <li>
+              <a routerLink="/login">Login</a>
+          </li>
+        
+        </ul>
+</nav>
+
+<router-outlet></router-outlet>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Register Here</title>
+</head>
+
+<body >
+    <div class="container">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <div class="row"><h2 style="color: green;">{{message}}</h2></div>
+          <div class="row">
+            <h3>Register Here!!</h3>
+          </div>
+
+          <form #myForm="ngForm" (ngSubmit)="Register(myForm)">
+            <div class="row">
+                <div class="form-group">
+                    <label>Name :</label>
+                    <input [(ngModel)]="name" type="text" name="name" id="name" class="form-control" placeholder="Enter your name" />
+                </div>
+            </div>
+            <div class="row">
+              <div class="form-group">
+                <label>Email :</label>
+                <input [(ngModel)]="email" type="text" name="email" id="email" class="form-control" placeholder="Enter Email" />
+              </div>
+            </div>
+    
+            <div class="row">
+              <div class="form-group">
+                <label>Password :</label>
+                <input [(ngModel)]="password" type="password" name="password" id="password" class="form-control"
+                  placeholder="Enter Password" />
+              </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label>Address :</label>
+                    <input [(ngModel)]="address"  type="text" name="address" id="address" class="form-control"
+                    placeholder="Enter address" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group">
+                    <label>Mobile No</label>
+                    <input [(ngModel)]="mobileNo"  type="text" name="mobileNo" id="mobileNo" class="form-control"
+                    placeholder="Enter Mobile no" />
+                </div>
+            </div>
+
+        <div class="row" style="text-align: center;">
+            <div class="form-group">
+                <label>Role :</label>
+                <select [(ngModel)]="role" name="role" id="role">
+                   
+                    <option value="CUSTOMER">Customer</option>
+                    <option value="VENDOR">Vendor</option>
+                </select>
+            </div>
+        </div>
+      
+        <div class="row">
+            <input type="button" (click)="GoToHome()" style="text-align: right ;" name="cancel" class="btn btn-danger" value="Cancel" id="btncancel" />
+            <input type="submit" style="float: right;" style="text-align: right;" name="register" class="btn btn-primary" value="Register" id="btnregister" />
+        </div>
+ </form>
+    </div>
+  </div>
+      
+  
+</body>
+
+</html>

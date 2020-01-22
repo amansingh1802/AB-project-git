@@ -1,0 +1,146 @@
+<router-outlet></router-outlet>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>TILES COMPANY</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default rounded borders and increase the bottom margin */ 
+    .navbar {
+      margin-bottom: 50px;
+      border-radius: 0;
+    }
+    
+    /* Remove the jumbotron's default bottom margin */ 
+     .jumbotron {
+      margin-bottom: 0;
+    }
+   
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: #f2f2f2;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="jumbotron">
+  <div class="container text-center" style="color: aquamarine;text-decoration-style: solid;">
+    <h1 >TILES</h1>      
+    <p>GIVE STYLE TO YOUR LIFE</p>
+    <p>BEAUTIFUL HOMES </p>
+  </div>
+</div>
+
+<nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <ul class="nav navbar-nav">
+      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/aboutus">About Us</a></li>
+      <li><a routerLink="/downloads">Downloads</a></li>
+      <li><a routerLink="/products">Products</a></li>
+      <li *ngIf="role == 'ADMIN' || role == 'VENDOR'"><a routerLink="/addProduct">Add Products</a></li>
+      <li><a routerLink="/contactus">Contact Us</a></li>
+      <li *ngIf="isActive !== '1'"><a routerLink="/login">Login/Register</a></li>
+      <li *ngIf="isActive === '1'"><a routerLink="/logout">Logout</a></li>
+      <li *ngIf="isActive === '1'"><a routerLink="/changePassword">Change Password</a></li>
+      <li *ngIf="isActive === '1'"><a routerLink="/orders">Orders</a></li>
+      <li style="text-align: right;">
+        <a routerLink="/cart">Cart</a>
+      </li>
+    </ul>
+    <h3 *ngIf="isActive === '1'">{{welcomeMessage}}</h3>
+</nav>
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-success" >
+        <div class="panel-heading" >FLOORING 
+        <input type="button" style="float: right; color: rgb(39, 233, 233);size: 10px;" class="btn btn-primary" name="addtocart" value="Add to cart" id="addtocart" />
+        </div>
+        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">price 
+          <br>
+          DESCRIPTION
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-success">
+        <div class="panel-heading">FLOORING 
+          <input type="button" style="float: right; color: rgb(39, 233, 233);size: 10px;" class="btn btn-primary" name="addtocart" value="Add to cart" id="addtocart" />
+
+        </div>
+        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">price
+          <br>
+          DESCRIPTION
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-success">
+        <div class="panel-heading" >FLOORING          
+           <input type="button" style="float: right; color: rgb(39, 233, 233);size: 10px;" class="btn btn-primary" name="addtocart" value="Add to cart" id="addtocart" />
+        </div>
+        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">price</div>
+      </div>
+    </div>
+  </div>
+</div><br>
+
+<div class="container">    
+  <div class="row">
+    <div class="col-sm-4">
+      <div class="panel panel-success">
+        <div class="panel-heading">FLOORING
+          <input type="button" style="float: right; color: rgb(39, 233, 233);size: 10px;" class="btn btn-primary" name="addtocart" value="Add to cart" id="addtocart" />
+
+        </div>
+        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">price
+          <br>
+          DESCRIPTION
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-success">
+        <div class="panel-heading">FLOORING
+          <input type="button" style="float: right; color: rgb(39, 233, 233);size: 10px;" class="btn btn-primary" name="addtocart" value="Add to cart" id="addtocart" />
+
+        </div>
+        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">PRICE
+          <br>
+          DESCRIPTION
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4"> 
+      <div class="panel panel-success">
+        <div class="panel-heading" style="size: 50px;">FLOORING
+          <input type="button" style="float: right; color: rgb(39, 233, 233);" class="btn btn-primary" name="addtocart" value="Add to cart" id="addtocart" />
+
+        </div>
+        <div class="panel-body"><img src="https://placehold.it/150x80?text=IMAGE" class="img-responsive" style="width:100%" alt="Image"></div>
+        <div class="panel-footer">PRICE
+          <br>
+          DESCRIPTION
+        </div>
+      </div>
+    </div>
+  </div>
+</div><br><br>
+
+<!-- <footer class="container-fluid text-center"> -->
+ 
+
+</body>
+</html>
